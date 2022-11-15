@@ -5,6 +5,7 @@ from . import models, crud
 def get_user_params(db: Session, db_user: models.Person):
     return {
         "id": db_user.person_id,
+        "login": db_user.login,
         "email": db_user.email,
         "first_name": db_user.first_name,
         "last_name": db_user.last_name,

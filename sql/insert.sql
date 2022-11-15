@@ -1,12 +1,13 @@
 use db;
 
-insert into person
-    (person_id, first_name, last_name, email, password) values
-    (1, 'Taya', 'Penskaya', 'taya@mail.com', 'kuku'),
-    (2, 'Alex', 'Smirnov', 'alex@mail.com', '2345'),
-    (3, 'Sofia', 'Povarova', 'sss@mail.com', 'sss'),
-    (4, 'Alyona', 'Antonova', 'alyo@mail.com', 'alyo'),
-    (5, 'Nadya', 'Gorokhova', 'nad@mail.com', 'nadya');
+insert into person 
+    (person_id, login, first_name, last_name, email, password) values
+    (1, 'taya', 'Taya', 'Penskaya', 'taya@mail.com', 'kuku'),
+    (2, 'alex', 'Alex', 'Smirnov', 'alex@mail.com', '2345');
+
+insert into  person (person_id, login, first_name, last_name, email, password) values (3, 'sof', 'Sofia', 'Povarova', 'sss@mail.com', 'sss');
+insert into  person (person_id, login, first_name, last_name, email, password) values (4, 'alyo', 'Alyona', 'Antonova', 'alyo@mail.com', 'alyo');
+insert into  person (person_id, login, first_name, last_name, email, password) values (5, 'nadya', 'Nadya', 'Gorokhova', 'nad@mail.com', 'nadya');
 
 insert into destination
     (dest_id, dest_name) values
@@ -39,7 +40,4 @@ insert into trip
 insert into person_trip
     (person_id, trip_id) values
     (2, 1),
-    (1, 5),
-    (3, 4),
-    (4, 6), 
-    (5, 2);
+    (1, 5);

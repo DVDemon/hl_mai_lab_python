@@ -37,8 +37,8 @@ def read_user_by_mask(first_name: str, last_name: str, db: Session = Depends(get
 
 
 @app.get("/users/")
-def read_users(skip: int = 0, limit: int = 3, db: Session = Depends(get_db)):
-    db_users = crud.get_users(db, skip=skip, limit=limit)
+def read_users(limit: int = 3, db: Session = Depends(get_db)):
+    db_users = crud.get_users(db, limit=limit)
     return list(map(lambda x: utils.get_user_params(db, x), db_users))
 
 
@@ -91,19 +91,21 @@ def read_destinations(skip: int = 0, limit: int = 3, db: Session = Depends(get_d
 
 @app.post("/users/")
 def create_user(
+    login: str,
     first_name: str,
     last_name: str,
     email: str,
     password: str,
     db: Session = Depends(get_db),
 ):
-    db_user = crud.get_user_by_mask(db, first_name=first_name, last_name=last_name)
+    db_user = crud.get_user_by_login(db, login=login)
     if db_user:
         raise HTTPException(
-            status_code=400, detail="User with first_name/last_name already registered"
+            status_code=400, detail="User with this login already registered"
         )
     return crud.create_user(
         db=db,
+        login=login,
         first_name=first_name,
         last_name=last_name,
         email=email,

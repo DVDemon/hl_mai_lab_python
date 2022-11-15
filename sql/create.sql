@@ -4,6 +4,7 @@ use db;
 
 create table person (
     person_id int not null auto_increment,
+    login varchar(255),
     first_name varchar(255),
     last_name varchar(255),
     email varchar(255),

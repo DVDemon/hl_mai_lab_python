@@ -6,6 +6,7 @@ class Person(Base):
     __tablename__ = "person"
 
     person_id = Column(Integer, primary_key=True, index=True)
+    login = Column(String)
     first_name = Column(String)
     last_name = Column(String)
     email = Column(String)

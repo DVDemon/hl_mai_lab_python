@@ -1,11 +1,11 @@
 # MySQL + FastAPI
 
-## Create DB with Docker
+## Create docker with ProxySQL and MySQL
 
-- clone mysql image and run it:
+- build docker:
 ```
-sudo docker pull mysql/mysql-server:latest
-sudo docker run --name=mysql --env="MYSQL_ROOT_PASSWORD=pass" --publish 6603:3306 -d mysql/mysql-server:latest
+cd docker
+docker-compose up --build
 ```
 
 - if mysql client doesn't work locally:
@@ -14,29 +14,20 @@ echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-- connect to mysql by executable image format:
+- to check anything in ProxySQL:
 ```
-sudo docker exec -it mysql bash
-mysql -uroot -p
-```
-
-- grant access for remote (go to mysql in exec image format and write):
-```
-CREATE USER 'root'@'%' IDENTIFIED BY 'pass';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
-FLUSH PRIVILEGES;
+mysql -uradmin -pradmin -h 127.0.0.1 -P6032 --prompt='Admin> '
 ```
 
-- connect:
+- create tables in each node and insert data in them (user: test, password: pass)
 ```
-mysql -h 127.0.0.1 -P 6603 -p  
+mysql -h 127.0.0.1 -P 3360 -e "source sql/create.sql" -u test -p 
+mysql -h 127.0.0.1 -P 3361 -e "source sql/create.sql" -u test -p
+mysql -h 127.0.0.1 -P 6033 -e "source sql/insert.sql" -u test -p   
 ```
 
-- create and insert all data:
-```
-mysql -h 127.0.0.1 -P 6603  -e "source sql/create.sql" -p
-mysql -h 127.0.0.1 -P 6603  -e "source sql/insert.sql" -p
-```
+### IMPORTANT
+- if script contains two whitespaces, it get/post data in second node, else in first
 
 ## Start app
 

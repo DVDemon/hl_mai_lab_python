@@ -1,23 +1,46 @@
+import random
 import datetime
 from sqlalchemy.orm import Session
 from . import models
 
 
 def get_user(db: Session, person_id: int):
-    return db.query(models.Person).filter(models.Person.person_id == person_id).first()
+    first = db.execute("select * from person where person_id = %s" % person_id).first()
+    if first:
+        return first
+    return db.execute("select  * from person where person_id = %s" % person_id).first()
 
 
-def get_users(db: Session, skip: int = 0, limit: int = 5):
-    return db.query(models.Person).offset(skip).limit(limit).all()
+def get_users(db: Session, limit: int = 5):
+    first = db.execute("select * from person").all()
+    second = db.execute("select  * from person").all()
+    all = first + second
+    return all[:limit]
+
+
+def get_user_by_login(db: Session, login: str):
+    first = db.execute(
+        "select * from person where login = :val", {"val": login}
+    ).first()
+    if first:
+        return first
+    return db.execute(
+        "select  * from person where login = :val", {"val": login}
+    ).first()
 
 
 def get_user_by_mask(db: Session, first_name: str, last_name: str):
-    return (
-        db.query(models.Person)
-        .filter(models.Person.first_name.like("%" + first_name + "%"))
-        .filter(models.Person.last_name.like("%" + last_name + "%"))
-        .all()
-    )
+    first_name_mask = "%" + first_name + "%"
+    last_name_mask = "%" + last_name + "%"
+    first = db.execute(
+        "select * from person where first_name like :val1 and last_name like :val2",
+        {"val1": first_name_mask, "val2": last_name_mask},
+    ).all()
+    second = db.execute(
+        "select  * from person where first_name like :val1 and last_name like :val2",
+        {"val1": first_name_mask, "val2": last_name_mask},
+    ).all()
+    return first + second
 
 
 def get_destination(db: Session, dest_id: int):
@@ -116,14 +139,35 @@ def get_trips_by_person_id(db: Session, person_id: int, skip: int = 0, limit: in
 
 
 def create_user(
-    db: Session, first_name: str, last_name: str, email: str, password: str
+    db: Session, login: str, first_name: str, last_name: str, email: str, password: str
 ):
+    k = random.randint(0, 1)
+    person_id = len(get_users(db, limit=-1)) + 1
     db_user = models.Person(
-        email=email, first_name=first_name, last_name=last_name, password=password
+        person_id=person_id,
+        login=login,
+        email=email,
+        first_name=first_name,
+        last_name=last_name,
+        password=password,
     )
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
+    if not k:
+        db.add(db_user)
+        db.commit()
+        db.refresh(db_user)
+    else:
+        db.execute(
+            "insert into  person (person_id, login, first_name, last_name, email, password) values (:val0, :val1, :val2, :val3, :val4, :val5);",
+            {
+                "val0": person_id,
+                "val1": login,
+                "val2": first_name,
+                "val3": last_name,
+                "val4": email,
+                "val5": password,
+            },
+        )
+        db.commit()
     return db_user
 
 
