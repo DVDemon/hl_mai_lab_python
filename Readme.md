@@ -1,6 +1,6 @@
 # MySQL + FastAPI
 
-## Create docker with ProxySQL and MySQL
+## Create docker with ProxySQL, MySQL and Redis
 
 - build docker:
 ```

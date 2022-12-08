@@ -4,12 +4,17 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
+import aioredis
+import json
+
 from db import crud, models, utils
 from db.database import SessionLocal, engine
 
 models.Base.prepare(autoload_with=engine)
 
 app = FastAPI()
+
+redis = aioredis.from_url("redis://localhost:6379", decode_responses=True)
 
 # Dependency
 def get_db():
@@ -21,8 +26,15 @@ def get_db():
 
 
 @app.get("/users/{user_id}")
-def read_user(user_id: int, db: Session = Depends(get_db)):
+async def read_user(user_id: int, db: Session = Depends(get_db)):
+    redis_result = await redis.get(str(user_id))
+    if redis_result:
+        print("Hello from Redis")
+        return json.loads(redis_result)
+
     db_user = crud.get_user(db, person_id=user_id)
+    if db_user and not redis_result:
+        await redis.set(str(user_id), json.dumps(utils.get_user_params(db, db_user)))
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return utils.get_user_params(db, db_user)
@@ -90,7 +102,7 @@ def read_destinations(skip: int = 0, limit: int = 3, db: Session = Depends(get_d
 
 
 @app.post("/users/")
-def create_user(
+async def create_user(
     login: str,
     first_name: str,
     last_name: str,
@@ -103,7 +115,7 @@ def create_user(
         raise HTTPException(
             status_code=400, detail="User with this login already registered"
         )
-    return crud.create_user(
+    db_user = crud.create_user(
         db=db,
         login=login,
         first_name=first_name,
@@ -111,6 +123,10 @@ def create_user(
         email=email,
         password=password,
     )
+    await redis.set(
+        str(db_user.person_id), json.dumps(utils.get_user_params(db, db_user))
+    )
+    return db_user
 
 
 @app.post("/destinations/")
