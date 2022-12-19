@@ -142,7 +142,7 @@ def create_user(
     db: Session, login: str, first_name: str, last_name: str, email: str, password: str
 ):
     k = random.randint(0, 1)
-    person_id = len(get_users(db, limit=-1)) + 1
+    person_id = len(get_users(db, limit=-1)) + 2
     db_user = models.Person(
         person_id=person_id,
         login=login,

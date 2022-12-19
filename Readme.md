@@ -1,6 +1,6 @@
 # MySQL + FastAPI
 
-## Create docker with ProxySQL, MySQL and Redis
+## Create docker with ProxySQL, MySQL, Redis + Kafka
 
 - build docker:
 ```
@@ -33,9 +33,14 @@ mysql -h 127.0.0.1 -P 6033 -e "source sql/insert.sql" -u test -p
 
 create environment and install requirements:
 ```
-python -m venv rest
+python3 -m venv rest
 source rest/bin/activate
 pip install -r requirements.txt
+```
+
+start the writer to read data from the queue and save it to the database:
+```
+python3 writer.py
 ```
 
 start app:

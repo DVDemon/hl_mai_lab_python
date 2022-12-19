@@ -10,11 +10,15 @@ import json
 from db import crud, models, utils
 from db.database import SessionLocal, engine
 
+from kafka import KafkaProducer
+
 models.Base.prepare(autoload_with=engine)
 
 app = FastAPI()
 
 redis = aioredis.from_url("redis://localhost:6379", decode_responses=True)
+
+producer = KafkaProducer(bootstrap_servers=["localhost:9092"])
 
 # Dependency
 def get_db():
@@ -34,7 +38,7 @@ async def read_user(user_id: int, db: Session = Depends(get_db)):
 
     db_user = crud.get_user(db, person_id=user_id)
     if db_user and not redis_result:
-        await redis.set(str(user_id), json.dumps(utils.get_user_params(db, db_user)))
+        redis.set(str(user_id), json.dumps(utils.get_user_params(db, db_user)))
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return utils.get_user_params(db, db_user)
@@ -108,25 +112,18 @@ async def create_user(
     last_name: str,
     email: str,
     password: str,
-    db: Session = Depends(get_db),
 ):
-    db_user = crud.get_user_by_login(db, login=login)
-    if db_user:
-        raise HTTPException(
-            status_code=400, detail="User with this login already registered"
-        )
-    db_user = crud.create_user(
-        db=db,
-        login=login,
-        first_name=first_name,
-        last_name=last_name,
-        email=email,
-        password=password,
-    )
-    await redis.set(
-        str(db_user.person_id), json.dumps(utils.get_user_params(db, db_user))
-    )
-    return db_user
+    data = {
+        "login": login,
+        "first_name": first_name,
+        "last_name": last_name,
+        "email": email,
+        "password": password,
+    }
+    producer.send("my-topic", json.dumps(data).encode("utf-8"))
+    producer.flush()
+
+    return "Data written to topic"
 
 
 @app.post("/destinations/")
