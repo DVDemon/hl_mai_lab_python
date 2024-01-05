@@ -1,7 +1,8 @@
 <!--
---- Readme.md Snippet without images Start ---
+&lt;--- Readme.md Snippet without images Start ---&gt;
 ## Tech Stack
 DVDemon/hl_mai_lab_python is built on the following main stack:
+
 - [Python](https://www.python.org) – Languages
 - [MySQL](http://www.mysql.com) – Databases
 - [Redis](http://redis.io/) – In-Memory Databases
@@ -16,11 +17,13 @@ DVDemon/hl_mai_lab_python is built on the following main stack:
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet without images End ---
 
---- Readme.md Snippet with images Start ---
+&lt;--- Readme.md Snippet without images End ---&gt;
+
+&lt;--- Readme.md Snippet with images Start ---&gt;
 ## Tech Stack
 DVDemon/hl_mai_lab_python is built on the following main stack:
+
 - <img width='25' height='25' src='https://img.stackshare.io/service/993/pUBY5pVj.png' alt='Python'/> [Python](https://www.python.org) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/1025/logo-mysql-170x170.png' alt='MySQL'/> [MySQL](http://www.mysql.com) – Databases
 - <img width='25' height='25' src='https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png' alt='Redis'/> [Redis](http://redis.io/) – In-Memory Databases
@@ -35,14 +38,15 @@ DVDemon/hl_mai_lab_python is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet with images End ---
+
+&lt;--- Readme.md Snippet with images End ---&gt;
 -->
 <div align="center">
 
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [DVDemon/hl_mai_lab_python](https://github.com/DVDemon/hl_mai_lab_python)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|17<br/>Tools used|11/13/23 <br/>Report generated|
+|17<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -198,10 +202,10 @@ Full tech stack [here](/techstack.md)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
-|[pydantic](https://pypi.org/pydantic)|v1.10.2|10/29/22|Taisiya Penskaya |MIT|N/A|
-|[python-dotenv](https://pypi.org/python-dotenv)|v0.21.0|12/19/22|Taya Penskaya |BSD-3-Clause|N/A|
+|[pydantic](https://pypi.org/project/pydantic)|v1.10.2|10/29/22|Taisiya Penskaya |MIT|N/A|
+|[python-dotenv](https://pypi.org/project/python-dotenv)|v0.21.0|12/19/22|Taya Penskaya |BSD-3-Clause|N/A|
 
 <br/>
 <div align='center'>
 
-Generated via [Stack File](https://github.com/apps/stack-file)
+Generated via [Stack File](https://github.com/marketplace/stack-file)
