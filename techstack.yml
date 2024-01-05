@@ -1,7 +1,8 @@
 repo_name: DVDemon/hl_mai_lab_python
 report_id: '0178b1e52d5cf5e2eeebd7e0de3010bc'
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-13T18:45:33+00:00'
+timestamp: '2024-01-05T08:57:58+00:00'
 requested_by: TayaPenskaya
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python
   detection_source: Repo Metadata
 - name: SQL
   description: It is a domain-specific language used in programming
@@ -25,7 +27,8 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/2271/default_068d33483bba6b81ee13fbd4dc7aab9780896a54.png
-  detection_source: sql/insert.sql
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/sql/create.sql
+  detection_source: sql/create.sql
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:57:47.000000000 Z
 - name: FastAPI
@@ -38,6 +41,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Microframeworks (Backend)
   image_url: https://img.stackshare.io/service/25014/default_f6ff39141b468e832d1bc59fc98a060df604d44d.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -50,7 +54,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Serialization Frameworks
   image_url: https://img.stackshare.io/service/4393/ma2jqJKH_400x400.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -63,7 +67,8 @@ tools:
   category: Data Stores
   sub_category: Message Queue
   image_url: https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg
-  detection_source: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/docker/docker-compose.yml
+  detection_source: docker/docker-compose.yml
   last_updated_by: Taya Penskaya
   last_updated_on: 2022-12-19 13:03:42.000000000 Z
 - name: MySQL
@@ -74,6 +79,7 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1025/logo-mysql-170x170.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -86,6 +92,7 @@ tools:
   category: Data Stores
   sub_category: In-Memory Databases
   image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/docker/docker-compose.yml
   detection_source: docker/docker-compose.yml
   last_updated_by: Taya Penskaya
   last_updated_on: 2022-12-08 10:33:33.000000000 Z
@@ -99,7 +106,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/1839/q5uAkmy7.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -112,6 +119,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -121,6 +129,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python
   detection_source: Repo Metadata
 - name: PyPI
   description: A repository of software for the Python programming language
@@ -130,6 +139,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Hosted Package Repository
   image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -143,7 +153,7 @@ tools:
   category: Application Hosting
   sub_category: Web Servers
   image_url: https://img.stackshare.io/service/12834/uvicorn.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -155,6 +165,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Open Source Service Discovery
   image_url: https://img.stackshare.io/service/1528/apache-zookeeper.png
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/docker/docker-compose.yml
   detection_source: docker/docker-compose.yml
   last_updated_by: Taya Penskaya
   last_updated_on: 2022-12-19 13:03:42.000000000 Z
@@ -168,7 +179,7 @@ tools:
   category: Libraries
   sub_category: Data Science Tools
   image_url: https://img.stackshare.io/service/2179/default_332f874a2edb2686f578aa6389313efcea1eec41.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
@@ -179,13 +190,13 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/4220/LNPwoiWi_400x400.jpg
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
 - name: pydantic
   description: Data validation and settings management using python 3.6 type hinting
-  package_url: https://pypi.org/pydantic
+  package_url: https://pypi.org/project/pydantic
   version: 1.10.2
   license: MIT
   open_source: true
@@ -193,13 +204,13 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20022/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taisiya Penskaya
   last_updated_on: 2022-10-29 17:59:11.000000000 Z
 - name: python-dotenv
   description: Add .env support to your django/flask apps in development and deployments
-  package_url: https://pypi.org/python-dotenv
+  package_url: https://pypi.org/project/python-dotenv
   version: 0.21.0
   license: BSD-3-Clause
   open_source: true
@@ -207,7 +218,7 @@ tools:
   category: Libraries
   sub_category: PyPI Packages
   image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
-  detection_source_url: requirements.txt
+  detection_source_url: https://github.com/DVDemon/hl_mai_lab_python/blob/main/requirements.txt
   detection_source: requirements.txt
   last_updated_by: Taya Penskaya
   last_updated_on: 2022-12-19 13:03:42.000000000 Z
